@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cajero Automatico</title>
+	<style>
+	    form{
+	        margin: 20%;
+	    }
+	    #recuadro{
+	    	
+	    }
+	    input{
+	    	margin:2%;
+	    }
+	</style>
+</head>
+<body>
+	<form >
+	    <input type="button" onclick="cajero.consultar()" value="obtener saldo de la cuenta">
+	    <br>
+	    <input type="button" onclick="cajero.ingresar()" value="Ingresar dinero en la cuenta">
+	    <br>
+	    <input type="button" onclick="cajero.retirar()" value="Retirar dinero de la cuenta">
+	    <br>
+	    <input type="button" onclick="cajero.consultarMovimientos()" value="Consultar últimos movimientos">
+	    
+	    
+	</form>
+	<div id="recuadro"></div>
+	<script>
+var cajero=new Object;
+var resultado=document.getElementById("recuadro");
+cajero.consultar=function(){
+
+    resultado.innerHTML="Su saldo actual es de: " + cajero.saldo;
+}
+cajero.consultarMovimientos=function(){
+	document.write("Sus últimos movimientos son:");
+	document.write("<br>");
+	for(i=0;i<cajero.movimientos.length;i++){
+	document.write(cajero.movimientos[i]);
+	document.write("<br>");
+}
+}
+cajero.saldo=100;
+cajero.movimientos= new Array();
+cajero.ingresar=function(){
+	resultado.innerHTML=" ";
+	var ingreso=prompt("Cuanto dinero quieres ingresar?");
+	alert("Gracias por tu ingreso");
+	cajero.movimientos.push("+" + ingreso);
+ return cajero.saldo=cajero.saldo+ parseInt(ingreso); 
+}
+cajero.retirar=function(){
+	var devengo=prompt("cuanto dinero quieres retirar?");
+  if (cajero.saldo<devengo){
+   alert("Lo siento no tienes suficiente saldo")
+   return false;
+  } else {
+  	alert("Recoja su dinero. Gracias")
+  	cajero.movimientos.push("-" + devengo);
+    return cajero.saldo=cajero.saldo-parseInt(devengo); }
+
+
+    
+}
+	</script>
+</body>
+</html>
