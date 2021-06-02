@@ -1,5 +1,5 @@
 function redireccionarPagina() {
-    window.location = "../pin.html";
+    window.location = "/index.html";
   }
-  setTimeout("redireccionarPagina()", 3000);
+  setTimeout("redireccionarPagina()", 1000);
 
